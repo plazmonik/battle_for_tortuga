@@ -1,3 +1,12 @@
+class Board:
+    def __init__(self, board_size):
+        self.board = [Field(x, y) for x in range(board_size) for y in range(board_size)]
+
+    def show_board(self, visible_only, or_not):
+        pass
+
+
+
 class Field:
     def __init__(self, x, y):
         self.x = x
@@ -6,16 +15,10 @@ class Field:
         self.visible_ship = None
 
 
-class Board:
-    def __init__(self, board_size):
-        self.board = [Field(x, y) for x in range(board_size) for y in range(board_size)]
-
-    def show_board(self, visible_only):
-        pass
 
 class Ship:
     def __init__(self, side, direction, power):
-        self.side =  None #'Spanish' or 'Pirates'
+        self.side =  None #'Spanishach' or 'Pirates'
         self.direction = None # one of 'NSEW'
         self.power = None # one of 1, 2 or 3
         self.pos_x = None
