@@ -23,8 +23,8 @@ class Ship:
         self.power = None # one of 1, 2 or 3
         self.pos_x = None
         self.pos_y = None
-
-     def move(self, direction):
+        
+    def move(self, direction):
         pass
 
 
