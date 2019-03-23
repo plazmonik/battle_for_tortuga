@@ -3,14 +3,14 @@ class Field:
         self.x = x
         self.y = y
         self.hidden_ship = None
-        self.seen_ship = None
+        self.visible_ship = None
 
 
 class Board:
     def __init__(self, board_size):
         self.board = [Field(x, y) for x in range(board_size) for y in range(board_size)]
 
-    def show_board(self):
+    def show_board(self, visible_only):
         pass
 
 class Ship:
@@ -49,6 +49,11 @@ class ThreeShip(Ship):
         pass
 
 class Arbiter:
-    def __init(self, spain_player, pirate_player):
+    def __init__(self, spain_player, pirate_player):
         self.spain_player = spain_player #
         self.pirate_player = pirate_player
+        self.board = None
+
+    def prepare_game(self):
+        #initiate the board
+        pass
