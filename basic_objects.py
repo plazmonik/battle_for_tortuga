@@ -15,7 +15,7 @@ class Board:
 
 class Ship:
     def __init__(self, side, direction, power):
-        self.side =  None #'Spaniards' or 'Pirates'
+        self.side =  None #'Spanish' or 'Pirates'
         self.direction = None # one of 'NSEW'
         self.power = None # one of 1, 2 or 3
         self.pos_x = None
