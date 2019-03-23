@@ -1,3 +1,5 @@
+#To będzie super ekstra projekt ale całkowicie go zmienię już wkrótce, jak mi się będzie chciało (a jak nie, to będę korzystać z głównego brancha)
+
 class Field:
     def __init__(self, x, y):
         self.x = x
