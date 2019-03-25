@@ -1,5 +1,5 @@
 import random
-
+from PIL import Image
 
 class Field:
     def __init__(self, x, y):
@@ -25,7 +25,7 @@ class Field:
 
 class Ship:
     def __init__(self, side, power):
-        self.side =  side #'Spaniard' or 'Pirates'
+        self.side =  side #'spanish' or 'pirates'
         self.direction = None # one of 'NSEW'
         self.power = power # one of 1, 2 or 3
 
@@ -42,7 +42,18 @@ class OneShip(Ship):
 
     def draw_a_ship(self):
         #this function should draw a ship
-        pass
+        if OneShip.side == 'spanish': #I want to call the side of a parent OneShip, how do I do that????
+            try:
+                img = Image.open('img/spain1.png') #Should this variable be declared as self.img????
+            except IOError:
+                pass
+
+        elif OneShip.side == 'pirates':
+            try:
+                img = Image.open('img/pirate1.png')
+            except IOError:
+                pass
+
 
 
 class TwoShip(Ship):
@@ -51,7 +62,17 @@ class TwoShip(Ship):
 
     def draw_a_ship(self):
         #this function should draw a ship
-        pass
+        if TwoShip.side == 'spanish':
+            try:
+                img = Image.open('img/spain2.png')
+            except IOError:
+                pass
+
+        elif TwoShip.side == 'pirates':
+            try:
+                img = Image.open('img/pirate2.png')
+            except IOError:
+                pass
 
 
 class ThreeShip(Ship):
@@ -60,8 +81,17 @@ class ThreeShip(Ship):
 
     def draw_a_ship(self):
         #this function should draw a ship
-        pass
+        if ThreeShip.side == 'spanish':
+            try:
+                img = Image.open('img/spain3.png')
+            except IOError:
+                pass
 
+        elif ThreeShip.side == 'pirates':
+            try:
+                img = Image.open('img/pirate3.png')
+            except IOError:
+                pass
 
 class Arbiter:
     def __init__(self, spain_player, pirate_player):
@@ -75,7 +105,7 @@ class Arbiter:
         #initiate the board
         self.board = [Field(x, y) for x in range(self.board_size) for y in range(self.board_size)
                       if (x, y) not in [(0, 0), (0,self.board_size-1), (self.board_size-1, 0), (self.board_size-1, self.board_size-1)]]
-        ships = [OneShip('spaniards'), TwoShip('spaniards'), ThreeShip('spaniards'),
+        ships = [OneShip('spanish'), TwoShip('spanish'), ThreeShip('spanish'),
                  OneShip('pirates'), TwoShip('pirates'), ThreeShip('pirates')]*2
         random.shuffle(ships)
         for field, ship in zip(self.board, ships):
@@ -108,7 +138,17 @@ class Arbiter:
 
     def draw_a_board(self):
         # this method should print a board in a human-friendly form
-        pass
+        try:
+            img = Image.open('img/board.png')
+        except IOError:
+            pass
+        #img.show()
+        #statki wkleja się na planszę przez img.paste(img2, (posx,posy)) img2 musi być otwarty - obrazek konkretnego statku albo hidden. posx i posy dla poszczególnych pól to:
+        #Field (0,1) - (116, 6)
+        #Field (0,2) - (226, 6)
+        #Field (1,0) - (6, 116) itd. dodajemy 110 dla każdego pola
+        #albo współrzędne odwrotnie, nigdy nie wiem
+        img.save('img/board_in_play.png')
 
     def show_visible_board(self):
         # this function should present the boardstate and game result to the player
@@ -134,3 +174,4 @@ if __name__ == '__main__':
     arbiter.board[0].reveal_ship()
     print(arbiter.board[0].__dict__)
     print(arbiter.board[0].visible_ship.__dict__)
+    arbiter.draw_a_board()
