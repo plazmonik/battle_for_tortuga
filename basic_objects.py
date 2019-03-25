@@ -42,13 +42,13 @@ class OneShip(Ship):
 
     def draw_a_ship(self):
         #this function should draw a ship
-        if OneShip.side == 'spanish': #I want to call the side of a parent OneShip, how do I do that????
+        if self.side == 'spanish': #I want to call the side of a parent OneShip, how do I do that????
             try:
                 img = Image.open('img/spain1.png') #Should this variable be declared as self.img????
             except IOError:
                 pass
 
-        elif OneShip.side == 'pirates':
+        elif self.side == 'pirates':
             try:
                 img = Image.open('img/pirate1.png')
             except IOError:
@@ -62,13 +62,13 @@ class TwoShip(Ship):
 
     def draw_a_ship(self):
         #this function should draw a ship
-        if TwoShip.side == 'spanish':
+        if self.side == 'spanish':
             try:
                 img = Image.open('img/spain2.png')
             except IOError:
                 pass
 
-        elif TwoShip.side == 'pirates':
+        elif self.side == 'pirates':
             try:
                 img = Image.open('img/pirate2.png')
             except IOError:
@@ -81,13 +81,13 @@ class ThreeShip(Ship):
 
     def draw_a_ship(self):
         #this function should draw a ship
-        if ThreeShip.side == 'spanish':
+        if self.side == 'spanish':
             try:
                 img = Image.open('img/spain3.png')
             except IOError:
                 pass
 
-        elif ThreeShip.side == 'pirates':
+        elif self.side == 'pirates':
             try:
                 img = Image.open('img/pirate3.png')
             except IOError:
@@ -142,13 +142,18 @@ class Arbiter:
             img = Image.open('img/board.png')
         except IOError:
             pass
+       # img2 = Image.open('img/spain1.png')
+       # img2 = img2.rotate(270)
+       # img.paste(img2, (226,6)) #wkleja przez zastąpienie, a nie nałożenie -.- trzeba sprawdzić więcej
+        # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html
+        img.save('img/board_in_play.png')
         #img.show()
         #statki wkleja się na planszę przez img.paste(img2, (posx,posy)) img2 musi być otwarty - obrazek konkretnego statku albo hidden. posx i posy dla poszczególnych pól to:
         #Field (0,1) - (116, 6)
         #Field (0,2) - (226, 6)
         #Field (1,0) - (6, 116) itd. dodajemy 110 dla każdego pola
         #albo współrzędne odwrotnie, nigdy nie wiem
-        img.save('img/board_in_play.png')
+        #img.save('img/board_in_play.png')
 
     def show_visible_board(self):
         # this function should present the boardstate and game result to the player
